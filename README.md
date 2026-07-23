@@ -67,3 +67,10 @@ Si deseas replicar este proyecto localmente, asegúrate de tener PostgreSQL inst
    JOIN galaxy ON star.galaxy_id = galaxy.galaxy_id;
 ```
 
+---
+
+## 📜 Créditos y Reconocimientos
+
+* **Origen de la consigna / dataset:** Este proyecto es uno de los desafíos requeridos para la obtención de la **Certificación de Bases de Datos Relacionales** de [freeCodeCamp](https://www.freecodecamp.org/).
+* **Implementación:** La lógica de scripts en Bash (`insert_data.sh`), la estructuración del esquema PostgreSQL (`worldcup.sql`) y la elaboración de consultas analíticas (`queries.sh`) fueron desarrolladas por completo como resolución individual al problema planteado.
+
