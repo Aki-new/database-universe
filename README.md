@@ -13,6 +13,15 @@ La base de datos se llama `universe` y contiene una estructura jerárquica que c
 * **Moon**: Satélites naturales asociados a cada planeta.
 * **Galaxy Types**: Una tabla adicional para categorizar la morfología galáctica.
 
+## 📐 Estructura y Relaciones (DER)
+
+```mermaid
+erDiagram
+    GALAXY ||--o{ STAR : contiene
+    STAR ||--o{ PLANET : orbita
+    PLANET ||--o{ MOON : tiene
+```
+
 ## 🛠️ Detalles Técnicos
 
 * **Motor de Base de Datos:** PostgreSQL.
@@ -28,6 +37,12 @@ Para cumplir con los requisitos de la certificación, la base de datos incluye:
 - **12** Planetas.
 - **20** Lunas.
 
+## 🛠️ Conceptos Demostrados
+
+* **Normalización y Claves Foráneas**: Garantía de integridad referencial entre entidades jerárquicas (Galaxia ➔ Estrella ➔ Planeta ➔ Luna).
+* **Restricciones de Integridad** (Constraints): Uso estricto de NOT NULL, UNIQUE, y tipos de datos adecuados (Enteros, Cadenas, Booleanos, Flotantes/Numéricos).
+* **Script DDL & DML**: Creación estructurada de tablas e inserción inicial de datos lista para su ejecución.
+
 ## ⚙️ Cómo reconstruir la base de datos
 
 Si deseas replicar este proyecto localmente, asegúrate de tener PostgreSQL instalado y sigue estos pasos:
@@ -38,3 +53,17 @@ Si deseas replicar este proyecto localmente, asegúrate de tener PostgreSQL inst
 2. Importa el archivo SQL:
 ```
    psql universe < universe.sql
+```
+
+## 🔍 Consultas de Ejemplo (Queries)
+```SQL
+   -- Obtener todos los planetas con el nombre de su estrella y galaxia correspondiente
+   SELECT 
+       planet.name AS planeta, 
+       star.name AS estrella, 
+       galaxy.name AS galaxia
+   FROM planet
+   JOIN star ON planet.star_id = star.star_id
+   JOIN galaxy ON star.galaxy_id = galaxy.galaxy_id;
+```
+
